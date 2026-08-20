@@ -5,7 +5,7 @@ let previousOperator;
 const screen = document.querySelector('.screen');
 
 function buttonClick(value) {
-    if (isNaN(value)) {
+    if (isNaN(value) || value === '.') {
         handleSymbol(value);
     } else {
         handleNumber(value);
@@ -43,6 +43,18 @@ function handleSymbol(symbol) {
         case 'x':
         case '/':
             handleMath(symbol);
+            break;
+        case '+/-':
+            if (buffer !== '0') {
+                buffer = (parseInt(buffer) * -1).toString();
+            }
+            screen.textContent = buffer;
+            break;
+        case '.':
+            if (!buffer.includes('.')) {
+                buffer += '.';
+            }
+            screen.textContent = buffer;
             break;
     }
 }
