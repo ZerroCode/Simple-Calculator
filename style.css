@@ -1,0 +1,51 @@
+html{
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+}
+*,
+*::before,
+*::after{
+    box-sizing: inherit;
+}
+body{
+    font-family: 'roboto', sans-serif;
+    font-display: swap;
+    background: linear-gradient(60deg, #1b1b1b, #202020, #1b1b1b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    width: inherit;
+}
+.screen{
+    background-color: #141414;
+    color: #ffffff;
+    font-size: 2rem;
+    text-align: right;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+.calculator-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.calculator-buttons-row{
+    display: flex;
+    gap: 0.2rem;
+}
+.btn{
+    background-color: #2c2c2c;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    flex: 1;
+}
+.calculator-buttons-row .btn:last-child{
+    background-color: #ff9500;
+}
