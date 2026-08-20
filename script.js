@@ -25,9 +25,9 @@ function handleSymbol(symbol) {
             if (previousOperator === undefined) {
                 return;
             }
-            flushOperation(parseInt(buffer));
+            flushOperation(parseFloat(buffer));
             previousOperator = undefined;
-            buffer = runningTotal;
+            buffer = runningTotal.toString();
             runningTotal = 0;
             break;
         case '←':
@@ -46,7 +46,7 @@ function handleSymbol(symbol) {
             break;
         case '+/-':
             if (buffer !== '0') {
-                buffer = (parseInt(buffer) * -1).toString();
+                buffer = (parseFloat(buffer) * -1).toString();
             }
             screen.textContent = buffer;
             break;
@@ -63,26 +63,26 @@ function handleMath(symbol) {
     if (buffer === '0') {
         return;
     }   
-    const intBuffer = parseInt(buffer);
+    const numBuffer = parseFloat(buffer);
     if (runningTotal === 0) {
-        runningTotal = intBuffer;
+        runningTotal = numBuffer;
     }
     else {
-        flushOperation(intBuffer);
+        flushOperation(numBuffer);
     }
     previousOperator = symbol;
     buffer = '0';
 }
 
-function flushOperation(intBuffer) {
+function flushOperation(numBuffer) {
     if (previousOperator === '+') {
-        runningTotal += intBuffer;
+        runningTotal += numBuffer;
     } else if (previousOperator === '-') {
-        runningTotal -= intBuffer;
+        runningTotal -= numBuffer;
     } else if (previousOperator === 'x') {
-        runningTotal *= intBuffer;
+        runningTotal *= numBuffer;
     } else if (previousOperator === '/') {
-        runningTotal /= intBuffer;
+        runningTotal /= numBuffer;
     }
 }
 
